@@ -8,9 +8,8 @@ let meetup = {
   place: room
 };
 
-// circle link
-room.occupiedBy = meetup;
-meetup.self = meetup;
+room.occupiedBy = meetup; // circle link
+meetup.self = meetup; // circle link
 
 alert( JSON.stringify(meetup, function replacer(key, value) {
   return (key != '' && value == meetup) ? undefined : value;
