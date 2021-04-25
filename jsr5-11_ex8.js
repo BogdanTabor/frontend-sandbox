@@ -9,7 +9,7 @@ function formatDate(date) {
   let diffMin = diffSec / 60;
   let diffHour = diffMin / 60;
 
-  // форматирование
+  // formatting
   year = year.toString().slice(-2);
   month = month < 10 ? '0' + month : month;
   dayOfMonth = dayOfMonth < 10 ? '0' + dayOfMonth : dayOfMonth;
@@ -17,11 +17,11 @@ function formatDate(date) {
   minutes = minutes < 10 ? '0' + minutes : minutes;
 
   if (diffSec < 1) {
-    return 'прямо сейчас';
+    return 'right now';
   } else if (diffMin < 1) {
-    return `${diffSec} сек. назад`
+    return `${diffSec} sec. ago`
   } else if (diffHour < 1) {
-    return `${diffMin} мин. назад`
+    return `${diffMin} min. ago`
   } else {
     return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
   }

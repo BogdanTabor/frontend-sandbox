@@ -1,1 +1,1 @@
-Hello! This is a repo for studying where I commit solvings from JSR tutorial.
+Hello! This is a repository for studying where I commit solvings from [The Modern JavaScript Tutorial](https://javascript.info/).
