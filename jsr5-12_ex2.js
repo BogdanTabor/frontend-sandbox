@@ -4,7 +4,7 @@ let room = {
 
 let meetup = {
   title: "Meetup",
-  occupiedBy: [{name: "Ivanov"}, {name: "Petrov"}],
+  occupiedBy: [{name: "James"}, {name: "Peter"}],
   place: room
 };
 
@@ -18,7 +18,7 @@ alert( JSON.stringify(meetup, function replacer(key, value) {
 /* result wiil be:
 {
   "title":"Meetup",
-  "occupiedBy":[{"name":"Ivanov"},{"name":"Petrov"}],
+  "occupiedBy":[{"name":"James"},{"name":"Peter"}],
   "place":{"number":23}
 }
 */
