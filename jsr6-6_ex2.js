@@ -1,6 +1,6 @@
 function sum(a) {
-  let currentSum = a;//currentSum
-  function next(b) {//function accumulator
+  let currentSum = a;
+  function next(b) { //function accumulator
     currentSum += b;
     return next;
   }
