@@ -4,11 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExtendedConsoleClock</title>
+  <title>ExtendedClock</title>
 </head>
 <body>
-  <p id="clock"></p>
-
+  <div>
+  <!-- style="
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -125px;
+  " -->
+    <h1 id="clock"></h1>
+    <h3 id="weather"></h3>
+    <!-- <form>
+      <input id="input" type="number" placeholder="type ms">
+      <button onclick="">Set precision</button>
+    </form> -->
+  </div>
+  
   <script>
     class Clock {
       constructor({ template }) {
@@ -31,8 +46,6 @@
           .replace('h', hours)
           .replace('m', mins)
           .replace('s', secs);
-        console.clear();
-        console.log(output);
         document.getElementById("clock").innerHTML = output;
       }
 
@@ -48,16 +61,27 @@
 
     class ExtendedClock extends Clock {
       constructor(options) {
-        super(options)
-          let { precision } = options;
-          this.precision = precision;
-        }
-
-        start() {
-          this.render();
-          this.timer = setInterval(() => this.render(), this.precision)
-        }
+      super(options)
+        let { precision } = options;
+        this.precision = precision;
       }
+
+      start() {
+        this.render();
+        this.timer = setInterval(() => this.render(), this.precision)
+      }
+    }
+
+    class Weather {
+      
+      showWeather() {
+        const wthr = `here will be weather forecast`;
+        document.getElementById("weather").innerHTML = wthr;
+      }
+    }
+
+    let wthr = new Weather();
+    wthr.showWeather();
 
     let lowResolutionClock = new ExtendedClock({
       template: 'h:m:s',
@@ -65,6 +89,7 @@
     });
 
     lowResolutionClock.start();
+
   </script>
 </body>
 </html>
