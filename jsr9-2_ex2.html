@@ -16,15 +16,16 @@
     left: 50%;
     margin: -125px 0 0 -125px;
   " -->
-    <h1 id="clock"></h1>
-    <h3 id="weather"></h3>
-    <!-- <form>
-      <input id="input" type="number" placeholder="type ms">
-      <button onclick="">Set precision</button>
-    </form> -->
+
+    <div id="clock"></div>
+    <div id="weather"></div>
+
   </div>
   
   <script>
+    
+    //Clock section
+
     class Clock {
       constructor({ template }) {
         this.template = template;
@@ -71,24 +72,32 @@
         this.timer = setInterval(() => this.render(), this.precision)
       }
     }
-
-    class Weather {
-      
-      showWeather() {
-        const wthr = `here will be weather forecast`;
-        document.getElementById("weather").innerHTML = wthr;
-      }
-    }
-
-    let wthr = new Weather();
-    wthr.showWeather();
-
+    
     let lowResolutionClock = new ExtendedClock({
       template: 'h:m:s',
       precision: 1000
     });
 
     lowResolutionClock.start();
+
+
+    //Weather section
+
+    async function getWeather() {
+      const API_KEY = "366d4bfa1e777e20eb3961a0869f9b4f";
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${API_KEY}`
+      let data = await (await fetch(url)).json();
+      console.log(data);
+      return data;
+    }
+    
+    var weatherData;
+    (async () => {
+      weatherData = await getWeather()
+      weatherObj = JSON.stringify(weatherData);
+      console.log(weatherObj);
+      document.getElementById("weather").innerHTML = weatherObj;
+    })();
 
   </script>
 </body>
